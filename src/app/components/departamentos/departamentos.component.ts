@@ -1,7 +1,7 @@
 import { DepartamentoService } from './../../departamento.service';
 import { Departamento } from './../../Departamento';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-departamentos',
@@ -23,8 +23,8 @@ export class DepartamentosComponent implements OnInit {
   ngOnInit(): void {
     this.tituloFormulario = `Novo Departamento`;
     this.Departamento = new FormGroup({
-      Nome: new FormControl(null),
-      Sigla: new FormControl(null),
+      Nome: new FormControl("", [Validators.required]),
+      Sigla: new FormControl("", [Validators.required]),
 
     });
 
@@ -33,6 +33,7 @@ export class DepartamentosComponent implements OnInit {
   EnviarDepartamento(): void{
     const departamento : Departamento = this.Departamento.value;
 
+    console.log(departamento);
     this.departamentoService.CadastarDepartamento(departamento).subscribe(resultado =>{
       alert('Departamento criado');
     })

@@ -4,7 +4,7 @@
         <h6>{{tituloFormulario}}</h6>
         <hr/>
 
-        <form [formGroup]="Departamento" (ngSubmit)="CadastrarDepartamento()">
+        <form [formGroup]="Departamento" (ngSubmit)="EnviarDepartamento()">
           <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control form-control -sm" formControlName="Nome"/>
